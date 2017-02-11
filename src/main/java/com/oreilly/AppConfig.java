@@ -28,6 +28,7 @@ public class AppConfig {
 
     @Bean
     public Game game() {
+
         BaseballGame game = new BaseballGame(home, away);
         game.setDataSource(dataSource);
         return game;

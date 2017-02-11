@@ -3,6 +3,7 @@ package com.oreilly.entities;
 import javax.sql.DataSource;
 
 public class BaseballGame implements Game {
+
     private Team homeTeam;
     private Team awayTeam;
     private DataSource dataSource;
