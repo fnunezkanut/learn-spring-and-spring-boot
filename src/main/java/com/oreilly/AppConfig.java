@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import javax.sql.DataSource;
+import java.text.NumberFormat;
 import java.util.List;
 
 @Configuration
@@ -18,6 +20,12 @@ public class AppConfig {
 
     @Autowired
     private DataSource dataSource;
+
+    @Bean
+    public NumberFormat numberFormat(){
+
+        return NumberFormat.getCurrencyInstance();
+    }
 
     /*
     @Autowired
@@ -32,7 +40,7 @@ public class AppConfig {
     @Autowired
     private List<Team> teams;
 
-    @Bean
+    @Bean @Scope("prototype")
     public Game game() {
 
         BaseballGame game = new BaseballGame(teams.get(0), teams.get(1));
