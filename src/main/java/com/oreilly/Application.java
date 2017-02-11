@@ -16,7 +16,9 @@ public class Application {
 
 //        ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
 
         System.out.println("Beans provided by Spring Boot:");
         String[] beanNames = context.getBeanDefinitionNames();
@@ -42,6 +44,10 @@ public class Application {
         NumberFormat numberFormat = context.getBean( NumberFormat.class );
         double amount = 123456.99;
         System.out.println( numberFormat.format( amount ) );
+
+
+        //close
+        context.close();
     }
 
 }

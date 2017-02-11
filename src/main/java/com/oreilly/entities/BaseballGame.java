@@ -1,5 +1,7 @@
 package com.oreilly.entities;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 public class BaseballGame implements Game {
@@ -35,6 +37,18 @@ public class BaseballGame implements Game {
     @Override
     public Team getAwayTeam() {
         return awayTeam;
+    }
+
+    @PostConstruct
+    public void startGame(){
+
+        System.out.println("Playing national anthem");
+    }
+
+    @PreDestroy
+    public void endGame(){
+
+        System.out.println("Sending highlights to MLB");
     }
 
     @Override

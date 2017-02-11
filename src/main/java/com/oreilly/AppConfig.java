@@ -27,7 +27,21 @@ public class AppConfig {
         return NumberFormat.getCurrencyInstance();
     }
 
-    /*
+    @Autowired
+    private List<Team> teams;
+
+//    @Bean(initMethod = "startGame", destroyMethod = "endGame")
+//    @Scope("prototype")
+    @Bean
+    public Game game() {
+
+        BaseballGame game = new BaseballGame(teams.get(0), teams.get(1));
+        game.setDataSource(dataSource);
+        return game;
+    }
+
+
+        /*
     @Autowired
     @Qualifier("redSox")
     private Team home;
@@ -36,16 +50,4 @@ public class AppConfig {
     @Qualifier("cubs")
     private Team away;
     */
-
-    @Autowired
-    private List<Team> teams;
-
-    @Bean @Scope("prototype")
-    public Game game() {
-
-        BaseballGame game = new BaseballGame(teams.get(0), teams.get(1));
-        game.setDataSource(dataSource);
-        return game;
-    }
-    
 }
