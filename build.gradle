@@ -28,7 +28,6 @@ repositories {
 	jcenter()
 }
 
-
 dependencies {
 
 	/*
